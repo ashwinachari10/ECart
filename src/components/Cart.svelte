@@ -11,7 +11,6 @@
 	let cart = {};
 	let unSubscribeProducts = Products.subscribe(data => (products = data));
 	let unSubscribeCart = Cart.subscribe(data => (cart = data));
-	console.log('HI', products, cart);
 
 	let selectedProducts = [];
 	for (let productId in cart) {
@@ -44,12 +43,14 @@
 <style>
 	.main-container {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		/* grid-template-columns: 1fr 1fr; */
+		grid-template-columns: repeat(auto-fill, 1fr);
 		grid-gap: 60px;
 	}
 	.cart-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		grid-gap: 60px;
 		grid-gap: 10px;
 		margin: 15px;
 	}

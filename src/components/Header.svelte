@@ -26,6 +26,8 @@
 		align-content: center;
 		align-items: center;
 		padding: 0 15px;
+		top: 0;
+		position: sticky;
 	}
 	h4 {
 		margin: 0;

@@ -45,7 +45,7 @@
 <style>
 	.category_container {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(auto-fill, 550px);
 		grid-gap: 20px;
 	}
 	.container {
@@ -63,9 +63,10 @@
 		list-style: none;
 	}
 	img {
-		width: 100px;
-		height: 100px;
-		object-fit: contain;
+		width: 80px;
+		height: 80px;
+		/* object-fit: contain; */
+		border-radius: 50%;
 	}
 	ul {
 		display: flex;
@@ -74,9 +75,23 @@
 	li {
 		display: flex;
 		align-items: center;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		margin: 5px;
+		border-radius: 5px;
 	}
 	.input_number {
 		width: 20%;
+	}
+	.product-title {
+		flex: 1;
+		font-weight: 500;
+	}
+	.product-details {
+		flex: 2;
+		padding: 1em;
+	}
+	.image-section {
+		padding: 1em;
 	}
 </style>
 
@@ -89,25 +104,27 @@
 					{#each item.products as product (product.id)}
 						<li>
 							<!-- svelte-ignore a11y-img-redundant-alt -->
-							<div>
+							<div class="image-section">
 								<img
 									src="/img/{product.image}"
 									alt="product image" />
 							</div>
-							<div>{product.name}</div>
-							<div>
-								<input
-									class="input_number"
-									type="number"
-									min="1"
-									placeholder="Qty"
-									id="qty-{product.id}"
-									value={cartData[product.id] != undefined ? cartData[product.id]['quantity'] : ''} />
-								<Button
-									on:click={() => addToCart(product.id, item.category_id)}>
-									Add to cart
-								</Button>
-								<div id="error-{product.id}" />
+							<div class="product-details">
+								<div class="product-title">{product.name}</div>
+								<div>
+									<input
+										class="input_number"
+										type="number"
+										min="1"
+										placeholder="Qty"
+										id="qty-{product.id}"
+										value={cartData[product.id] != undefined ? cartData[product.id]['quantity'] : ''} />
+									<Button
+										on:click={() => addToCart(product.id, item.category_id)}>
+										Add to cart
+									</Button>
+									<div id="error-{product.id}" />
+								</div>
 							</div>
 						</li>
 					{/each}

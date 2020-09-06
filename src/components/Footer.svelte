@@ -3,8 +3,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		bottom: 0;
-		position: sticky;
 	}
 </style>
 
